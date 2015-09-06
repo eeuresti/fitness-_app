@@ -91,6 +91,21 @@ app.get("/menu", function (req, res) {
   res.sendFile(path.join(views, "menu.html"));
 });
 
+//profile route 
+app.get("/profile", function (req, res) {
+  res.sendFile(path.join(views, "profile.html"));
+});
+
+//start route 
+app.get("/start", function (req, res) {
+  res.sendFile(path.join(views, "start.html"));
+});
+
+//break route 
+app.get("/break", function (req, res) {
+  res.sendFile(path.join(views, "break.html"));
+});
+
 
 //========================================
 // <<<<<<<<<<<< API endpoints >>>>>>>>>>>>
@@ -130,7 +145,7 @@ app.post(["/sessions", "/login"], function login(req, res) {
 	    // login the user
 	    req.login(user);
 	    // redirect to user profile
-	    res.redirect("/menu"); 
+	    res.redirect("/profile"); 
 	}
   });
 });
