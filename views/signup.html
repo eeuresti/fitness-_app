@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Microfit</title>
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- jQuery -->
+  <script src="/vendor/jquery/dist/jquery.min.js"></script>
+  <!-- Underscore -->
+  <script src="/vendor/underscore/underscore-min.js"></script>
+  <!-- Bootstrap JS -->
+  <script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Microfit CSS -->
+  <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+  <script src="/static/js/app.js"></script>
+</head>
+<body>
+  <div id="page-wrapper" class="container">
+    <header class="page-header">
+      <h1>Microfit <small>Quick Workouts for Indoorsy People</small></h1>
+    </header>
+    <!-- form -->
+    <h2>Sign Up!</h2>
+      <form method="post" action="/signup">
+        <div>
+          <input type="text" name="user[name]" placeholder='First Name'>
+        </div>
+        <div>
+          <input type="text" name="user[email]" placeholder='Email'>
+        </div>
+        <div>
+          <input type="password" name="user[password]" placeholder='Password'>
+        </div>
+        <!-- verify pw match
+        <div>
+          <input type="password" name="user[password]" placeholder='Re-type Password'>
+        </div>
+        end pw verification -->
+        <button>Signup!</button>
+
+      </form>
+
+</body>
+
+
+
+
+</html>
