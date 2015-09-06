@@ -106,6 +106,11 @@ app.get("/break", function (req, res) {
   res.sendFile(path.join(views, "break.html"));
 });
 
+//workout1 route 
+app.get("/workout1", function (req, res) {
+  res.sendFile(path.join(views, "workout1.html"));
+});
+
 
 //========================================
 // <<<<<<<<<<<< API endpoints >>>>>>>>>>>>
