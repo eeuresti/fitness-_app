@@ -2,7 +2,9 @@
 //========================================
 // <<<<<<<<<< Start Countdown >>>>>>>>>>>>
 //========================================
+
 var redirect = "/workout1";
+
 function startTimer(duration, display) {
     var timer = duration, seconds;
     setInterval(function () {
@@ -21,7 +23,7 @@ function startTimer(duration, display) {
 }
 
 window.onload = function () {
-    var tenSeconds = 10 * 1,
+    var tenSeconds = 10,
         display = document.querySelector('#time');
     startTimer(tenSeconds, display);
 };
