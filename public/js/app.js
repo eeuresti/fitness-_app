@@ -1,64 +1,61 @@
 //========================================
-// <<<<<<<<<< Start Countdown >>>>>>>>>>>>
+// <<<<<<<<<< Main Countdown >>>>>>>>>>>>
 //========================================
 
 
 
-// function startTimer(duration, display) {
-//     var timer = duration, seconds;
-//     setInterval(function () {
-//         //minutes = parseInt(timer / 60, 10)
-//         seconds = parseInt(timer % 60, 10);
+$(document).ready(function() {
+    var $workout = $(".workout");
 
-//         //minutes = minutes < 10 ? "0" + minutes : minutes;
-//         seconds = seconds < 10 ? "0" + seconds : seconds;
-
-//         display.textContent = seconds;
-
-//         if (--timer < 0) {
-//             timer = duration;
-//         }
-//     }, 1000);
-// }
-
-// window.onload = function () {
-//     var thirtySeconds = 3,
-//         display = document.querySelector('#thirtySeconds');
-//     startTimer(thirtySeconds, display);
-// };
-
-$( document ).ready(function() {
-
-
-$('#myCarousel').bind('slide.bs.carousel', function (e) {
-    console.log('slide event!');
-});
-
-$('#myCarousel').on('slide.bs.carousel', function (e) {
-    console.log('slide ON event!');
-    $('#myModal').modal('show'); 
-});
-
+    var counter = 75;
+    var countDown = setInterval(function(){
+      console.log(counter);
+      counter--
+        if (counter === 74) {
+            console.log("equal to 74");
+            $(".routine").append("<p class='workHead'>Let's gets started!</p>");
+        }
+        else if (counter === 70) {
+            console.log("second workout");
+            $(".routine").empty().append("<p class='workHead'>Jumping Jacks!</p>");
+        }
+        else if (counter === 65) {
+            console.log("take a break");
+            $(".routine").empty().append("<b>Take a break!</b>");
+        }
+        else if (counter === 0) {
+            console.log("Finished!!");
+            clearInterval(countDown);
+          }
+    }, 1000); 
+    
+    
 
 });
 
-// $("#carousel-example-generic").on('slide.bs.carousel', function () {
-//             console.log('A new slide is about to be shown!');
-//             // $('#myModal').modal('show'); 
-//     });
+
+
+//========================================
+// <<<<<<<<<< Countdowns >>>>>>>>>>>>
+//========================================
+
+function countDown(s) {
+    var counter = s;
+    var countDown = setInterval(function(){
+      console.log(counter);
+      counter--
+      if (counter === 0) {
+        console.log("Finished!!");
+        clearInterval(countDown);
+      }
+    }, 1000);  
+
+};
 
 
 
-// // Activate Carousel
-// $("#myCarousel").carousel();
 
-// // Enable Carousel Indicators
-// $(".item").click(function(){
-//     $("#myCarousel").carousel(1);
-// });
 
-// // Enable Carousel Controls
-// $(".left").click(function(){
-//     $("#myCarousel").carousel("prev");
-// });
+
+
 
