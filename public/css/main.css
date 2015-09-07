@@ -1,19 +1,10 @@
-body {
-	background-color: lightblue;
+#carousel-example-generic h1 {
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
 }
 
-.workout {
-	text-align: center;
-	margin-left: auto;
-	margin-right: auto;
-	height: 100%;
-	width: 100%;
-}
-
-.carousel-inner h1 {
-	font-size: 150px;
-}
 
 .carousel-caption {
-    position:static;
+    position: static;
 }
