@@ -1,3 +1,7 @@
-.workHead {
+.itemName {
     font-size: 100px;
+    color: blue;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
 }
