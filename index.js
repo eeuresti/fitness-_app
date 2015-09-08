@@ -150,7 +150,7 @@ app.post(["/sessions", "/login"], function login(req, res) {
 	    // login the user
 	    req.login(user);
 	    // redirect to user profile
-	    res.redirect("/profile"); 
+	    res.redirect("/menu"); 
 	}
   });
 });
