@@ -1,7 +1,62 @@
+
+
+
+body {
+    background-color: #6ed3cf;
+    font-family: 'Raleway', sans-serif;
+    color: white;
+}
+
+
+/*===================
+<<<<<<<< Home >>>>>>>
+===================*/
+
+#home-wrapper {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.home-header h1 {
+    font-size: 900%;
+}
+
+
+
+
+
+/*===================
+<<<<<< Routine 1 >>>>
+===================*/
+
 .itemName {
     font-size: 100px;
-    color: blue;
+    color: white;
     text-align: center;
     margin-right: auto;
     margin-left: auto;
+    font-family: 'Raleway', sans-serif;
+    margin-top: 50px;
+    text-shadow: 5px 5px 3px #888888;
+}
+
+.countdown {
+    font-size: 150px;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    background-color: white;
+    color: #e62739;
+    border-radius: 50%;
+    width: 290px;
+    height: 290px;
+    padding-top: 15px;
+    padding-bottom: auto;
+    box-shadow: 10px 10px 5px #888888;
+}
+
+
+.routine1 {
+    background-color: #6ed3cf;
 }

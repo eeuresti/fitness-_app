@@ -18,28 +18,30 @@
   <script src="/static/js/app.js"></script>
 </head>
 <body>
-  <div id="page-wrapper" class="container">
-    <header class="page-header">
-      <h1>Microfit <small>Quick Workouts for Indoorsy People</small></h1>
+  <div class="container" id="home-wrapper" >
+    <header class="home-header">
+      <h1>Microfit <br><small>Quick Workouts for Indoorsy People</small></h1>
     </header>
     <!-- Sign up Button -->
     <div>
-     <button id="signButton" action="/signup">SignUp!</button>
+     <button id="signButton" action="/signup" class="btn btn-default btn-lg">SignUp!</button>
      <script type="text/javascript">
         document.getElementById("signButton").onclick = function () {
             location.href = "/signup";
         };
     </script>
     </div>
+    <br>
     <!-- Log In Button-->
     <div>
-     <button id="logButton" action="/login">Login!</button>
+     <button id="logButton" action="/login" class="btn btn-default btn-lg" >Login!</button>
      <script type="text/javascript">
         document.getElementById("logButton").onclick = function () {
             location.href = "/login";
         };
     </script>
     </div>
+  </div>
 
 </body>
 
