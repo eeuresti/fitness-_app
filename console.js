@@ -1,21 +1,15 @@
 var REPL= require("repl");
 var db = require('./models');
 
-
-db.User.find({}, function(err, user){
-	if (err) {
-		console.log(err, "error!");
-	}
-	else {
-		console.log(user);
-	}
-});
+var workout1 = function(){
+  console.log("Sit Ups!");
+};
+setTimeout(workout1, 2000);
 
 
 
-// Book.remove({ title: "The Giver" }, function(err, book) {
-//     if (err) { return console.log(err) };
 
-//     console.log("removal of " + book.title + " successful.")
-// });
-
+// //workout timer
+// var workoutTimer = setTimeout(function(){
+//    console.log("1 second has passed!");
+// }, 5000)
