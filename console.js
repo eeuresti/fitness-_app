@@ -1,15 +1,20 @@
-var REPL= require("repl");
-var db = require('./models');
+var REPL = require("repl");
+var db = require("./models");
 
-var workout1 = function(){
-  console.log("Sit Ups!");
-};
-setTimeout(workout1, 2000);
-
+var repl = REPL.start("> ");
+repl.context.db = db;
+repl.context.findAllWorkouts = findAllWorkouts;
 
 
+repl.on("exit", function () {
+ console.log("Goodbye");
+ process.exit();
+});
 
-// //workout timer
-// var workoutTimer = setTimeout(function(){
-//    console.log("1 second has passed!");
-// }, 5000)
+
+
+function findAllWorkouts() {
+db.Workout.find({}, function(err, workouts){
+	console.log(workouts);
+	});
+}

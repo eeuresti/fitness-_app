@@ -96,20 +96,11 @@ app.get("/profile", function (req, res) {
   res.sendFile(path.join(views, "profile.html"));
 });
 
-//start route 
-app.get("/start", function (req, res) {
-  res.sendFile(path.join(views, "start.html"));
-});
-
-//break route 
-app.get("/break", function (req, res) {
-  res.sendFile(path.join(views, "break.html"));
-});
-
 //routine1 route 
 app.get("/routine1", function (req, res) {
   res.sendFile(path.join(views, "routine1.html"));
 });
+
 
 
 //========================================
