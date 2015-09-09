@@ -101,6 +101,41 @@ app.get("/routine1", function (req, res) {
   res.sendFile(path.join(views, "routine1.html"));
 });
 
+//========================================
+// <<<<<<<<<<<< db routes >>>>>>>>>>>>>>>
+//========================================
+
+// //routine index path
+// app.get("/phrase", function (req, res){
+//   //console.log("get is getting /phrase");
+//   // render phrases index as JSON
+//   db.Phrase.find({}, function(err, phrases_list) {
+//     //console.log("db.Phrase.find");
+//     if (err) {
+//       console.log(err);
+//       return res.sendStatus(400);
+//     }
+//     //console.log(phrases);
+//     res.send(phrases_list);
+//   })
+// });
+
+
+
+// app.post("/phrase", function (req, res){
+//   //console.log("posting is working!");
+//   var newPhrase = req.body;
+//   //console.log(newPhrase);
+//   // create new food to DB (array, really...)
+//   db.Phrase.create(newPhrase, function(err, phrases) {
+//     if (err) {
+//       console.log(err);
+//       return res.sendStatus(400);
+//     }
+//     // send a response with newly created object
+//     res.send(phrases);
+//   });
+// });
 
 
 //========================================
@@ -121,7 +156,8 @@ app.post(["/users", "/signup"], function signup(req, res) {
 	
 	// create the new user
 	db.User.createSecure(name, email, password, function() {
-	res.send(email + " is registered!\n");
+	//res.send(email + " is registered!\n");
+  res.redirect("/menu");
 	});
 });
 

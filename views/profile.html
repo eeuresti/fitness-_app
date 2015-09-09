@@ -16,6 +16,8 @@
   <!-- Microfit CSS -->
   <link rel="stylesheet" type="text/css" href="/static/css/main.css">
   <script src="/static/js/home.js"></script>
+   <!-- Google Fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,700|Shadows+Into+Light|Raleway:400,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
   <div id="page-wrapper" class="container">
@@ -23,20 +25,15 @@
       <h1>Microfit <small>Quick Workouts for Indoorsy People</small></h1>
     </header>
     <!-- Create Workouts-->
-    <h2>Create your own Routine</h2>
-    <!-- Form -->
-      <form method="post" action="/">
-        <div>
-          <input type="text" name="workout[wname]" placeholder='Workout 1'>
-        </div>
-        <div>
-          <input type="text" name="workout[wname]" placeholder='Workout 2'>
-        </div>
-        <button>Save!</button>
-
-      
-    </form>
+    <h2>Workout Log</h2>
+    
     <hr>
+     <script type="text/template" id="workoutlog-template">
+    <div class="worklog">
+        <p>Workout:<%= workoutName %> was completed on <%= createdAt %></p>
+        <br>
+    </div>
+  </script>
 
 
 

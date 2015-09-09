@@ -14,33 +14,38 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css">
   <!-- Microfit CSS -->
-  <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+  <link rel="stylesheet" type="text/css" href="/static/css/home.css">
   <!-- JavaScript -->
   <script src="/static/js/home.js"></script>
+  <!-- Google Fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,700|Shadows+Into+Light|Raleway:700' rel='stylesheet' type='text/css'>
+
 </head>
 <body>
   <div class="container" id="home-wrapper" >
     <header class="home-header">
-      <h1>Microfit <br><small>Quick Workouts for Indoorsy People</small></h1>
+      <h1>Microfit</h1>
+     
+      <h2> Quick Workouts for Lazy & Indoorsy People</h2>
     </header>
     <!-- Sign up Button -->
     <div>
-     <button id="signButton" action="/signup" class="btn btn-default btn-lg">SignUp!</button>
+     <button class="floated" id="signButton" action="/signup" class="btn btn-default btn-lg">SignUp!</button>
      <script type="text/javascript">
         document.getElementById("signButton").onclick = function () {
             location.href = "/signup";
         };
     </script>
     </div>
-    <br>
     <!-- Log In Button-->
     <div>
-     <button id="logButton" action="/login" class="btn btn-default btn-lg" >Login!</button>
+     <button class="floated" id="logButton" action="/login" class="btn btn-default btn-lg" >Login!</button>
      <script type="text/javascript">
         document.getElementById("logButton").onclick = function () {
             location.href = "/login";
         };
     </script>
+    <br class="clearFloat">
     </div>
   </div>
 

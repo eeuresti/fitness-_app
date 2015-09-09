@@ -4,16 +4,43 @@ var mongoose = require('mongoose'),
     bcrypt = require('bcrypt');
 
 
+ //========================================
+// <<<<<<<<<<< Completion Schema >>>>>>>>>>>>
+//========================================
+
+var CompletionSchema = new Schema({
+  createdAt: {type: Date, default: Date.now},
+  routineUsed: String
+});   
+
+
+// //========================================
+// // <<<<<<<<<<< Routine Schema >>>>>>>>>>>>
+// //========================================
+
+// var RoutineSchema = new Schema({
+//   name: String,
+//   workouts: [
+//     {name: String, duration: Number, type: String}
+//   ]
+// });
+
+
 //========================================
 // <<<<<<<<<<< User Schema >>>>>>>>>>>>>>>
 //========================================
 
 var UserSchema = new Schema({
 	name: {type: String, required: true},	
-  	email: {type: String, required: true},
-  	passwordDigest: {type: String, required: true},
-  	createdAt: {type: Date, default: Date.now}
+	email: {type: String, required: true},
+	passwordDigest: {type: String, required: true},
+	createdAt: {type: Date, default: Date.now},
+  completions: [CompletionSchema]
 });
+
+
+
+
 
 //========================================
 // <<<<<<<< Create User w/ Hash Pw>>>>>>>>
@@ -77,36 +104,13 @@ UserSchema.methods.checkPassword = function (password) {
 
 
 
-//========================================
-// <<<<<<<<<<<< Routine Schema >>>>>>>>>>>
-//========================================
-
-var routineSchema = new Schema ({
-  workout1: String,
-  workout2: String,
-  workout3: String,
-  workout4: String,
-  workout5: String,
-  workout6: String,
-  workout7: String,
-  workout8: String, 
-  workout9: String,
-  workout10: String,
-  workout11: String,
-  workout12: String
-});
 
 
 
 
 
-
-
-
-//define the routine model
-var Routine = mongoose.model('Routine', routineSchema);
-
-
+// define completion model
+var Completion = mongoose.model('Completion', CompletionSchema);
 
 // define user model
 var User = mongoose.model('User', UserSchema);

@@ -14,7 +14,7 @@ repl.on("exit", function () {
 
 
 function findAllWorkouts() {
-db.Workout.find({}, function(err, workouts){
+db.User.find({}, function(err, workouts){
 	console.log(workouts);
 	});
 }
