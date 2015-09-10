@@ -1,8 +1,9 @@
 
 
-var $item = $(".routine p.itemName");
-var $next = $(".next");
-var redirect = "/menu";
+var $item = $(".routine p.itemName"); //shortcut to html
+var $next = $(".next"); //shortcut to html
+var redirect = "/menu";  //shortcut to the next page to be displayed upon routine completion
+
 
 //========================================
 // <<<<<<<<<< Routine 1 Data >>>>>>>>>>
@@ -28,7 +29,6 @@ var response = {
    ]
 }
 
-
 //========================================
 // <<<<<<<<<<<<<< Functions >>>>>>>>>>>>>>
 //========================================
@@ -39,7 +39,7 @@ function nextWorkout(){
     if (next) {
         return next
     } 
-    //if no more workouts, redirect to menu page
+    //if no more workouts, count log completions and redirect to menu page
     else {
         $.post("/logCompletion", {routineUsed: location.pathname.slice(1)})
           .done(function(res){
@@ -59,22 +59,22 @@ function doNextWorkout(){
     var current_workout = nextWorkout();
     var currentType = current_workout.type;
   
-      
+      //if the workout type is "start", do this
       if (currentType === "start") {
-      console.log("shit just got real");
       $("body").css("background-color", "#9068be");
       $(".itemName").text(current_workout.name);
       countDownFrom(current_workout.duration, doNextWorkout)
     }
+    //if the workout type is workout, then do this
     else if (currentType === "workout"){
       var upNext = response.workout[0].name;
-      console.log("this is a workout");
       $("body").css("background-color", "#61EF9E");
       $(".itemName").text(current_workout.name);
       $(".next").text("You Can Do This!");
       countDownFrom(current_workout.duration, doNextWorkout)
     }
     
+    //if the workout type is break, do this
     else if (currentType === "break") {
       var upNext = response.workout[0].name;
       console.log("this is a break");
@@ -83,6 +83,8 @@ function doNextWorkout(){
       $(".next").text("Up Next: "+ upNext);
       countDownFrom(current_workout.duration, doNextWorkout)
     }
+
+    //if the workout type is final, then do this
     else if (currentType === "final") {
       console.log("this is the end");
       $("body").css("background-color", "#9068be");
@@ -115,98 +117,6 @@ function countDownFrom(time, next) {
         }, 1000);
 }
 
-// //========================================
-// // <<<<<<<<<< workoutlog template >>>>>>>>>>
-// //========================================
-// //create 
-// //workoutlogTemplate = _.template($('#workoutlog-template').html());
-
-// //========================================
-// // <<<<<<<<<< Routine 1 Data >>>>>>>>>>
-// //========================================
-
-// var response = {
-//   workout: [
-//       {name: "Let's get started", duration: 10, type: "break"},
-//       {name: "Let's get started", duration: 10, type: "break"},
-//       {name: "Jumping Jacks", duration: 30, type: "workout"},
-//       {name: "Cool down", duration: 10, type: "break"},
-//       {name: "Wall Sits", duration: 30, type: "workout"},
-//       {name: "Cool down", duration: 10, type: "break"},
-//       {name: "Push-ups", duration: 30, type: "workout"},
-//       {name: "Cool down", duration: 10, type: "break"},
-//       {name: "Abdominal crunches", duration: 30, type: "workout"},
-//       {name: "Cool down", duration: 10, type: "break"},
-//       {name: "Step-up onto a chair", duration: 30, type: "workout"},
-//       {name: "Cool down", duration: 10, type: "break"},
-//       {name: "Squat", duration: 30, type: "workout"},
-//       {name: "Cool down", duration: 10, type: "break"},
-//       {name: "Tricep dips on a chair", duration: 30, type: "workout"},
-//       {name: "Cool down", duration: 10, type: "break"},
-//       {name: "Plank", duration: 30, type: "workout"},
-//       {name: "Cool down", duration: 10, type: "break"},
-//       {name: "High knees running in place", duration: 30, type: "workout"},
-//       {name: "Cool down", duration: 10, type: "break"},
-//       {name: "Lunge", duration: 30, type: "workout"},
-//       {name: "Cool down", duration: 10, type: "break"},
-//       {name: "Push and rotations", duration: 30, type: "workout"},
-//       {name: "Side-plank", duration: 30, type: "workout"},
-//       {name: "Cool down", duration: 10, type: "break"},
-
-//   ]
-// }
-
-
-// function nextWorkout(){
-//     var next = response.workout.shift();
-//     if (next) {
-//         return next
-//     } else {
-//         //log to the database that user completed routine
-
-//         window.location.href = redirect;
-//     }
-// }
-
-// function doNextWorkout(){
-//   var next = nextWorkout()
-//     var current_workout = nextWorkout();
-//           //console.log(current_workout.type, "current_workout type");
-//     if (current_workout.type === "break"){
-//       $("body").css("background-color", "#9068be");
-//       $(".itemName").text(current_workout.name)
-//       $(".next").text(nextWorkout.name)
-//       countDownFrom(current_workout.duration, doNextWorkout)
-//     }
-//     else {
-//       $("body").css("background-color", "#6ed3cf");
-//       $(".itemName").text(current_workout.name)
-//       countDownFrom(current_workout.duration, doNextWorkout)
-//     }
-// }
-
-// $(function(){
-//     doNextWorkout()
-// })
 
 
 
-
-
-// //========================================
-// // <<<<<<<<<< countdown timer >>>>>>>>>>
-// //========================================
-
-// function countDownFrom(time, next) {
-//     var myInterval = setInterval(function() {
-//         if (time <= 1) {
-//             clearInterval(myInterval);
-//             next();
-//         }
-//         else {
-//             time--;
-//             console.log(time);
-//             $(".countdown").html(time);
-//            }
-//         }, 1000);
-// }
