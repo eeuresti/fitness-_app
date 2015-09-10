@@ -182,6 +182,18 @@ app.post(["/sessions", "/login"], function login(req, res) {
   });
 });
 
+app.post('/logCompletion', function logCompleteToDatabase (req, user) {
+  console.log(req.body);
+  req.currentUser(function(err, user) {
+    user.completions.push({});
+
+    user.save(function(err, success) {
+      if (err) {return console.log(err);}
+      console.log("Successfully added timestamp for " + user.email);
+    })
+  })
+  res.redirect('/menu');
+})
 
 
 

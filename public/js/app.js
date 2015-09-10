@@ -10,7 +10,7 @@ var redirect = "/menu";
 
 var response = {
    workout: [
-      {name: "Let's get started", duration: 10, type: "break"},
+      {name: "Let's get started", duration: 6, type: "break"},
       {name: "Jumping Jacks", duration: 30, type: "workout"},
       {name: "Cool down", duration: 10, type: "break"},
       {name: "Wall Sits", duration: 30, type: "workout"},
@@ -32,8 +32,9 @@ var response = {
       {name: "Lunge", duration: 30, type: "workout"},
       {name: "Cool down", duration: 10, type: "break"},
       {name: "Push and rotations", duration: 30, type: "workout"},
-      {name: "Side-plank", duration: 30, type: "workout"},
       {name: "Cool down", duration: 10, type: "break"},
+      {name: "Side-plank", duration: 30, type: "workout"},
+      {name: "You Are Done! Great Job!", duration: 6, type: "break"}
    ]
 }
 
@@ -50,6 +51,12 @@ function nextWorkout(){
     } 
     //if no more workouts, redirect to menu page
     else {
+        $.post("/logCompletion", $(this).serialize())
+          .done(function(res){
+          console.log(res);
+          //window.locaiton.pathname
+          alert(res);
+          });
         window.location.href = redirect;
     }
 }
@@ -66,7 +73,7 @@ function doNextWorkout(){
       console.log("this is a workout");
       $("body").css("background-color", "#61EF9E");
       $(".itemName").text(current_workout.name);
-      $(".next").text("You Can Do This!");
+      $(".next").text("You Can Do This!"                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     );
       countDownFrom(current_workout.duration, doNextWorkout)
     }
     
