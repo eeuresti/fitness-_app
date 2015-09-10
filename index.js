@@ -107,10 +107,6 @@ app.get("/menu", function (req, res) {
 // });
 
 
-//profile route 
-app.get("/profile", function (req, res) {
-  res.sendFile(path.join(views, "profile.html"));
-});
 
 //routine1 route 
 app.get("/routine1", function (req, res) {
@@ -212,6 +208,7 @@ app.post(["/sessions", "/login"], function login(req, res) {
   });
 });
 
+//last workout completed and when
 app.post('/logCompletion', function logCompleteToDatabase (req, res) {
   console.log("Current User: ", req.session.userId);
   db.User.findOne({_id: req.session.userId}, function(err, user) {
@@ -247,6 +244,4 @@ app.get("/workouts", function (req, res){
 });
 
 
-var listener = app.listen(3000, function () {
-  console.log("Listening on port " + listener.address().port);
-});
+var listener = app.listen(process.env.PORT || 3000);
