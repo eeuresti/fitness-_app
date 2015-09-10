@@ -77,7 +77,7 @@ app.use(function (req, res, next) {
 //========================================
 
 //home route 
-app.get("/home", function (req, res) {
+app.get("/", function (req, res) {
   res.sendFile(path.join(views, "home.html"));
 });
 
@@ -93,7 +93,14 @@ app.get("/login", function (req, res) {
 
 //menu route 
 app.get("/menu", function (req, res) {
-  res.sendFile(path.join(views, "menu.html"));
+  req.currentUser(function(err, user){
+    if(user) {
+      res.sendFile(path.join(views, "menu.html"));
+    } else {
+      res.redirect("/")
+    }
+  })
+  
 });
 
 //name route
@@ -125,63 +132,23 @@ app.get("/routine3", function (req, res) {
 
 
 //========================================
-// <<<<<<<<<<<< db routes >>>>>>>>>>>>>>>
-//========================================
-
-// //routine index path
-// app.get("/phrase", function (req, res){
-//   //console.log("get is getting /phrase");
-//   // render phrases index as JSON
-//   db.Phrase.find({}, function(err, phrases_list) {
-//     //console.log("db.Phrase.find");
-//     if (err) {
-//       console.log(err);
-//       return res.sendStatus(400);
-//     }
-//     //console.log(phrases);
-//     res.send(phrases_list);
-//   })
-// });
-
-
-
-// app.post("/phrase", function (req, res){
-//   //console.log("posting is working!");
-//   var newPhrase = req.body;
-//   //console.log(newPhrase);
-//   // create new food to DB (array, really...)
-//   db.Phrase.create(newPhrase, function(err, phrases) {
-//     if (err) {
-//       console.log(err);
-//       return res.sendStatus(400);
-//     }
-//     // send a response with newly created object
-//     res.send(phrases);
-//   });
-// });
-
-
-//========================================
 // <<<<<<<<<<<< API endpoints >>>>>>>>>>>>
 //========================================
 
 // user submits the sign-up form
 app.post(["/users", "/signup"], function signup(req, res) {
-	console.log("Looks like you're trying to signup!");
-	
 	// grab the user from the params
 	var user = req.body.user;
-	
 	// pull out their email, name & password
 	var name = user.name;
 	var email = user.email;
 	var password = user.password;
 	
 	// create the new user
-	db.User.createSecure(name, email, password, function() {
-	//res.send(email + " is registered!\n");
-  res.cookie("fit", user._id);
-  res.redirect("/menu");
+	db.User.createSecure(name, email, password, function(err, user) {
+    req.login(user);
+    res.cookie("fit", user._id);
+    res.redirect("/menu");
 	});
 });
 
@@ -210,16 +177,13 @@ app.post(["/sessions", "/login"], function login(req, res) {
 
 //last workout completed and when
 app.post('/logCompletion', function logCompleteToDatabase (req, res) {
-  console.log("Current User: ", req.session.userId);
   db.User.findOne({_id: req.session.userId}, function(err, user) {
     if(err) {console.log(err);}
-    console.log(user, "this is the user");
     var some = req.body.data;
     user.completions.push(some);
 
     user.save(function(err, success) {
        if (err) {return console.log(err);}
-       console.log("Successfully added timestamp for " + user.email);
     })
   })
   res.redirect('/menu');
@@ -230,15 +194,13 @@ app.post('/logCompletion', function logCompleteToDatabase (req, res) {
 
 //routine index path
 app.get("/workouts", function (req, res){
-  console.log("get is getting /workouts");
   // render phrases index as JSON
   db.User.find({completions: completions }, function(err, log) {
-    //console.log("db.Phrase.find");
+  
     if (err) {
       console.log(err);
       return res.sendStatus(400);
     }
-    //console.log(phrases);
     res.send(log);
   })
 });
