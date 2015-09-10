@@ -48,7 +48,8 @@ body {
 }
 
 .next{
-    font-family: verdana;
+    font-family: 'Josefin Sans';
+    text-shadow: 3px 3px 2px #888888;
     font-size: 50px;
     text-align: center;
     margin-left: auto;

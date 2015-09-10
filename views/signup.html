@@ -17,34 +17,27 @@
   <link rel="stylesheet" type="text/css" href="/static/css/sign.css">
   <script src="/static/js/home.js"></script>
    <!-- Google Fonts -->
-  <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,700|Shadows+Into+Light|Raleway:700' rel='stylesheet' type='text/css'>
+   <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,700|Shadows+Into+Light|Raleway:400,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
-  <div class="second_background">
-  <div id="sign-wrapper" class="container">
+  <div id="page-wrapper" class="container">
     <header class="page-header">
-      <h1>Microfit<h1>
-      <h2> Join the movement, literally. Sign Up! </h2>
+      <h1>Microfit. Join the Movement, literally.</h1>
     </header>
     <!-- form -->
-      <form method="post" action="/signup">
-        <div>
-          <input type="text" name="user[name]" placeholder='First Name'>
-        </div>
-        <div>
-          <input type="text" name="user[email]" placeholder='Email'>
-        </div>
-        <div>
-          <input type="password" name="user[password]" placeholder='Password'>
-        </div>
-        <br>
-
-        <button class="floated">Signup!</button>
-
-      </form>
-      </div>
-
-  </div>
+    <div class="form">
+  <form class="floated" method="post" action="/login">
+    <div>
+      <input class=" input-lg" type="text" name="user[email]" placeholder="Email">
+    </div>
+    <br>
+    <div>
+      <input class="input-lg" type="password" name="user[password]" placeholder="Password">
+    </div>
+    <br>
+    <button class="floated green">Signup!</button>
+  </form>
+  <br class="clearFloat">
 
 </body>
 

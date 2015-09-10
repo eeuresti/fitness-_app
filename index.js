@@ -10,6 +10,8 @@ var express = require('express'),
 
 // views path
 var views = path.join(process.cwd(), "views");
+var cookieParser = require("cookie-parser");
+
 
 
 //========================================
@@ -22,6 +24,9 @@ app.use("/vendor", express.static("bower_components"));
 
 // body parser config to accept all datatypes
 app.use(bodyParser.urlencoded({extended: true}))
+
+app.use(cookieParser("Super Secret")); // parse cookie data
+
 
 
 
@@ -91,6 +96,17 @@ app.get("/menu", function (req, res) {
   res.sendFile(path.join(views, "menu.html"));
 });
 
+//name route
+// app.get("/name", function (req, res) {
+//   db.User.
+//       findOne({ _id: req.session.userId },
+//       function (err, user) {
+        
+//         res.send(user.name);
+//   });
+// });
+
+
 //profile route 
 app.get("/profile", function (req, res) {
   res.sendFile(path.join(views, "profile.html"));
@@ -100,6 +116,17 @@ app.get("/profile", function (req, res) {
 app.get("/routine1", function (req, res) {
   res.sendFile(path.join(views, "routine1.html"));
 });
+
+//routine2 route 
+app.get("/routine2", function (req, res) {
+  res.sendFile(path.join(views, "routine2.html"));
+});
+
+//routine3 route 
+app.get("/routine3", function (req, res) {
+  res.sendFile(path.join(views, "routine3.html"));
+});
+
 
 //========================================
 // <<<<<<<<<<<< db routes >>>>>>>>>>>>>>>
@@ -157,6 +184,7 @@ app.post(["/users", "/signup"], function signup(req, res) {
 	// create the new user
 	db.User.createSecure(name, email, password, function() {
 	//res.send(email + " is registered!\n");
+  res.cookie("fit", user._id);
   res.redirect("/menu");
 	});
 });
@@ -176,6 +204,8 @@ app.post(["/sessions", "/login"], function login(req, res) {
   	else {
 	    // login the user
 	    req.login(user);
+      //assign cookie
+      res.cookie("fit", user._id, { signed: true });
 	    // redirect to user profile
 	    res.redirect("/menu"); 
 	}
@@ -203,16 +233,16 @@ app.post('/logCompletion', function logCompleteToDatabase (req, res) {
 
 //routine index path
 app.get("/workouts", function (req, res){
-  //console.log("get is getting /phrase");
+  console.log("get is getting /workouts");
   // render phrases index as JSON
-  db.Phrase.find({}, function(err, phrases_list) {
+  db.User.find({completions: completions }, function(err, log) {
     //console.log("db.Phrase.find");
     if (err) {
       console.log(err);
       return res.sendStatus(400);
     }
     //console.log(phrases);
-    res.send(phrases_list);
+    res.send(log);
   })
 });
 

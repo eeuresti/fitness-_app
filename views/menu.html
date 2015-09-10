@@ -17,36 +17,39 @@
   <link rel="stylesheet" type="text/css" href="/static/css/menu.css">
   <script src="/static/js/home.js"></script>
    <!-- Google Fonts -->
-  <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,700|Shadows+Into+Light|Raleway:700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,700|Shadows+Into+Light|Raleway:400,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
   <div id="page-wrapper" class="container">
     <header class="page-header">
-      <h1>Microfit <small>Quick Workouts for Indoorsy People</small></h1>
-       <div class="workoutLog">
-    </div>
+      <h1>Welcome, <span id="name"></span><strong>Select your workout</strong></h1>
+
     </header>
-    <!-- form -->
-    <div>
-     <h2>Select A Routine</h2>
-    </div>
+
+    <div class="col-sm-12 col-md-12">
+  <div class="thumbnail tile tile-medium" id="corner">
     <a href="/routine1">
-    <div class="f_routine">
-      <h3>Easy Breezy<h3>
+      <h1>Easy Breezy</h1>
+      </a>
     </div>
+  </div>
+<div class="col-sm-12 col-md-12">
+  <div class="thumbnail tile tile-medium" id="corner">
+    <a href="/routine2" >
+      <h2>
+      Let's Get Weird
+      </h2>
     </a>
-    <a href="/routine2">
-    <div class="s_routine">
-      <h3> Break a Sweat<h3>
-    </div></a>
-    <a href="/routine3">
-    <div class="t_routine">
-      <h3> This is going to *&%#@ Hurt<h3>
-    </div></a>
-    <a href="/profile">
-    <div class="c_routine">
-      <h3> Profile / Create Your Own <h3>
-    </div></a>
+  </div>
+</div>
+<div class="col-sm-12 col-md-12">
+  <div class="thumbnail tile tile-wide" id="red">
+    <a href="routine3" >
+      <h1 class="tile-text">
+        This is going to f#$%&^ hurt</h1>
+    </a>
+  </div>
+</div>
  
 
 </body>

@@ -9,7 +9,7 @@ var mongoose = require('mongoose'),
 //========================================
 
 var CompletionSchema = new Schema({
-  //routineUsed: String,
+  routineUsed: String,
   createdAt: {type: Date, default: Date.now}
 });   
 

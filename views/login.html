@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css">
   <!-- Microfit CSS -->
   <link rel="stylesheet" type="text/css" href="/static/css/sign.css">
+  <!-- Microfit  -->
   <script src="/static/js/home.js"></script>
    <!-- Google Fonts -->
   <link href='https://fonts.googleapis.com/css?family=Josefin+Sans:400,700|Shadows+Into+Light|Raleway:400,700' rel='stylesheet' type='text/css'>
@@ -22,20 +23,23 @@
 <body>
   <div id="page-wrapper" class="container">
     <header class="page-header">
-      <h1>Microfit <small>Quick Workouts for Indoorsy People</small></h1>
+      <h1>Welcome Back!</h1>
     </header>
     <!-- form -->
-     <h1>Login</h1>
-  <form method="post" action="/login">
+    <div class="form">
+  <form class="floated" method="post" action="/login">
     <div>
-      <input type="text" name="user[email]" placeholder="Email">
+      <input class=" input-lg" type="text" name="user[email]" placeholder="Email">
     </div>
+    <br>
     <div>
-      <input type="password" name="user[password]" placeholder="Password">
+      <input class="input-lg" type="password" name="user[password]" placeholder="Password">
     </div>
-    <button>Login</button>
+    <br>
+    <button class="floated green">Login</button>
   </form>
-
+</div>
+<br class="clearFloat">
 </body>
 
 
