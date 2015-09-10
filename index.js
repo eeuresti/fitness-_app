@@ -182,20 +182,39 @@ app.post(["/sessions", "/login"], function login(req, res) {
   });
 });
 
-app.post('/logCompletion', function logCompleteToDatabase (req, user) {
-  console.log(req.body);
-  req.currentUser(function(err, user) {
-    user.completions.push({});
+app.post('/logCompletion', function logCompleteToDatabase (req, res) {
+  console.log("Current User: ", req.session.userId);
+  db.User.findOne({_id: req.session.userId}, function(err, user) {
+    if(err) {console.log(err);}
+    console.log(user, "this is the user");
+    var some = req.body.data;
+    user.completions.push(some);
 
     user.save(function(err, success) {
-      if (err) {return console.log(err);}
-      console.log("Successfully added timestamp for " + user.email);
+       if (err) {return console.log(err);}
+       console.log("Successfully added timestamp for " + user.email);
     })
   })
   res.redirect('/menu');
 })
 
 
+//getting workout info
+
+//routine index path
+app.get("/workouts", function (req, res){
+  //console.log("get is getting /phrase");
+  // render phrases index as JSON
+  db.Phrase.find({}, function(err, phrases_list) {
+    //console.log("db.Phrase.find");
+    if (err) {
+      console.log(err);
+      return res.sendStatus(400);
+    }
+    //console.log(phrases);
+    res.send(phrases_list);
+  })
+});
 
 
 var listener = app.listen(3000, function () {
