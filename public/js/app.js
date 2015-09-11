@@ -11,27 +11,27 @@ var redirect = "/menu";  //shortcut to the next page to be displayed upon routin
 var response = {
    workout: [
       {name: "Let's get started", duration: 6, type: "break"},
-      {name: "Jumping Jacks", duration: 30, type: "workout"},
-      {name: "Cool down", duration: 10, type: "break"},
-      {name: "Wall Sits", duration: 30, type: "workout"},
-      {name: "Cool down", duration: 10, type: "break"},
-      {name: "Push-ups", duration: 30, type: "workout"},
-      {name: "Cool down", duration: 10, type: "break"},
-      {name: "Abdominal crunches", duration: 30, type: "workout"},
-      {name: "Cool down", duration: 10, type: "break"},
-      {name: "Step-up onto a chair", duration: 30, type: "workout"},
-      {name: "Cool down", duration: 10, type: "break"},
-      {name: "Squat", duration: 30, type: "workout"},
-      {name: "Cool down", duration: 10, type: "break"},
-      {name: "Tricep dips on a chair", duration: 30, type: "workout"},
-      {name: "Cool down", duration: 10, type: "break"},
-      {name: "Plank", duration: 30, type: "workout"},
+      {name: "Jumping Jacks", duration: 5, type: "workout", song: "https://archive.org/embed/BritneySpearsWorkBChDANKUSARadioMix&autoplay=1"},
+      {name: "Cool down", duration: 10, type: "break", song: "https://archive.org/embed/nextWallSits&autoplay=1"},
+      {name: "Wall Sits", duration: 5, type: "workout", song:"https://archive.org/embed/TheWeekndCantFeelMyFacemp3cut.net&autoplay=1"},
+      {name: "Cool down", duration: 10, type: "break", song: "https://archive.org/embed/pushups&autoplay=1"},
+      {name: "Push-ups", duration: 5, type: "workout", song: "https://archive.org/embed/MajorLazerWatchOutForThisBumayeSongtextLyricsmp3cut.net_20150911&autoplay=1"},
+      {name: "Cool down", duration: 10, type: "break", song: "https://archive.org/embed/absominalcrunches&autoplay=1"},
+      {name: "Abdominal crunches", duration: 5, type: "workout", song: "https://archive.org/embed/IFINKUFREEKYByDIEANTWOORDOfficialmp3cut.net1&autoplay=1"},
+      {name: "Cool down", duration: 10, type: "break", song: "https://archive.org/embed/stepups&autoplay=1"},
+      {name: "Step-up onto a chair", duration: 30, type: "workout", song: "https://archive.org/embed/TechnotronicPumpUpTheJammp3cut.net1&autoplay=1"},
+      {name: "Cool down", duration: 10, type: "break", song: "https://archive.org/embed/squats_201509&autoplay=1" },
+      {name: "Squat", duration: 30, type: "workout", song:"https://archive.org/embed/MajorLazerBubbleButtfeat.BrunoMars2ChainzTygaMysticDirectedByEricWareheimmp3cut.net&autoplay=1"},
+      {name: "Cool down", duration: 10, type: "break", song:"https://archive.org/embed/tricepdips&autoplay=1"},
+      {name: "Tricep dips on a chair", duration: 30, type: "workout", song: },
+      {name: "Cool down", duration: 10, type: "break", song: "https://archive.org/embed/plank_201509&autoplay=1"},
+      {name: "Plank", duration: 30, type: "workout", song: "https://archive.org/embed/DefLeppardPourSomeSugarOnMemp3cut.net&autoplay=1"},
       {name: "Cool down", duration: 10, type: "break"},
       {name: "High knees running in place", duration: 30, type: "workout"},
       {name: "Cool down", duration: 10, type: "break"},
       {name: "Lunge", duration: 30, type: "workout"},
       {name: "Cool down", duration: 10, type: "break"},
-      {name: "Push and rotations", duration: 30, type: "workout"},
+      {name: "Push and rotations", duration: 30, type: "workout", song: "https://archive.org/embed/SaltNPepaPushItmp3cut.net1&autoplay=1"},
       {name: "Cool down", duration: 10, type: "break"},
       {name: "Side-plank", duration: 30, type: "workout"},
       {name: "You Are Done! Great Job!", duration: 6, type: "final"}
@@ -42,6 +42,11 @@ var response = {
 //========================================
 // <<<<<<<<<<<<<< Functions >>>>>>>>>>>>>>
 //========================================
+
+
+//music 
+
+
 
 //select workouts one by one
 function nextWorkout(){
@@ -68,6 +73,7 @@ function nextWorkout(){
 function doNextWorkout(){
     var current_workout = nextWorkout();
     var currentType = current_workout.type;
+    var currentSong = current_workout.song;
   
       //if the workout type is "start", do this
       if (currentType === "start") {
@@ -81,6 +87,7 @@ function doNextWorkout(){
       $("body").css("background-color", "#61EF9E");
       $(".itemName").text(current_workout.name);
       $(".next").text("You Can Do This!");
+      $("#music").attr('src', currentSong);
       countDownFrom(current_workout.duration, doNextWorkout)
     }
     
@@ -91,6 +98,7 @@ function doNextWorkout(){
       $("body").css("background-color", "#9068be");
       $(".itemName").text(current_workout.name);
       $(".next").text("Up Next: "+ upNext);
+      $("#music").attr('src', currentSong);
       countDownFrom(current_workout.duration, doNextWorkout)
     }
 
