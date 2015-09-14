@@ -23,7 +23,7 @@ app.use("/static", express.static("public"));
 app.use("/vendor", express.static("bower_components"));
 
 // body parser config to accept all datatypes
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(cookieParser("Super Secret")); // parse cookie data
 
@@ -57,17 +57,17 @@ app.use(function (req, res, next) {
       function (err, user) {
         req.user = user;
         cb(null, user);
-      })
+      });
   };
 
   // logout the current user
   req.logout = function () {
     req.session.userId = null;
-    req.user = null;;
-  }
+    req.user = null;
+  };
 
   // call the next middleware in the stack
-  next(); 
+  next();
 });
 
 
@@ -76,7 +76,7 @@ app.use(function (req, res, next) {
 // <<<<<<<<<<<< get routes >>>>>>>>>>>>>>>
 //========================================
 
-//home route 
+//home route
 app.get("/", function (req, res) {
   res.sendFile(path.join(views, "home.html"));
 });
@@ -86,21 +86,21 @@ app.get("/signup", function (req, res) {
   res.sendFile(path.join(views, "signup.html"));
 });
 
-//login route 
+//login route
 app.get("/login", function (req, res) {
   res.sendFile(path.join(views, "login.html"));
 });
 
-//menu route 
+//menu route
 app.get("/menu", function (req, res) {
   req.currentUser(function(err, user){
     if(user) {
       res.sendFile(path.join(views, "menu.html"));
     } else {
-      res.redirect("/")
+      res.redirect("/");
     }
-  })
-  
+  });
+
 });
 
 //name route
@@ -108,24 +108,24 @@ app.get("/menu", function (req, res) {
 //   db.User.
 //       findOne({ _id: req.session.userId },
 //       function (err, user) {
-        
+
 //         res.send(user.name);
 //   });
 // });
 
 
 
-//routine1 route 
+//routine1 route
 app.get("/routine1", function (req, res) {
   res.sendFile(path.join(views, "routine1.html"));
 });
 
-//routine2 route 
+//routine2 route
 app.get("/routine2", function (req, res) {
   res.sendFile(path.join(views, "routine2.html"));
 });
 
-//routine3 route 
+//routine3 route
 app.get("/routine3", function (req, res) {
   res.sendFile(path.join(views, "routine3.html"));
 });
@@ -143,7 +143,7 @@ app.post(["/users", "/signup"], function signup(req, res) {
 	var name = user.name;
 	var email = user.email;
 	var password = user.password;
-	
+
 	// create the new user
 	db.User.createSecure(name, email, password, function(err, user) {
     req.login(user);
@@ -162,7 +162,7 @@ app.post(["/sessions", "/login"], function login(req, res) {
   db.User.authenticate(email, password, function (err, user) {
   	if (err) {
   		console.log(err, "error");
-  		res.redirect("/login"); 
+  		res.redirect("/login");
   	}
   	else {
 	    // login the user
@@ -170,7 +170,7 @@ app.post(["/sessions", "/login"], function login(req, res) {
       //assign cookie
       res.cookie("fit", user._id, { signed: true });
 	    // redirect to user profile
-	    res.redirect("/menu"); 
+	    res.redirect("/menu");
 	}
   });
 });
@@ -184,10 +184,10 @@ app.post('/logCompletion', function logCompleteToDatabase (req, res) {
 
     user.save(function(err, success) {
        if (err) {return console.log(err);}
-    })
-  })
+    });
+  });
   res.redirect('/menu');
-})
+});
 
 
 //getting workout info
@@ -196,13 +196,13 @@ app.post('/logCompletion', function logCompleteToDatabase (req, res) {
 app.get("/workouts", function (req, res){
   // render phrases index as JSON
   db.User.find({completions: completions }, function(err, log) {
-  
+
     if (err) {
       console.log(err);
       return res.sendStatus(400);
     }
     res.send(log);
-  })
+  });
 });
 
 

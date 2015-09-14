@@ -40,12 +40,12 @@ var db = require("./models");
 // 	db.User.findOne({name: "Justin"}, function (err, user) {
 // 		// if user doesn't exist, say it doesn't exist and leave
 // 		if(err) {console.log(err); process.exit(0);}
-		
+
 // 		// creating a new Routine
 // 		var newRoutine = {};
 // 		newRoutine.name = "Leg Day";
 // 		newRoutine.workouts = [];
-	 
+
 // 	 	routine1.forEach(function(workout){
 // 	 		newRoutine.workouts.push(workout);
 // 			newRoutine.workouts.push("Running in place", 10, "Workout");
@@ -65,7 +65,7 @@ var db = require("./models");
 
 
 
-// // create a user named justin 
+// // create a user named justin
 // var Justin = {};
 // Justin.name="Justin";
 // Justin.email="justing@email.com";
@@ -86,7 +86,7 @@ var db = require("./models");
 // 	var newRoutine = {};
 // 	newRoutine.name = "Leg Day";
 // 	newRoutine.workouts = [];
- 
+
 //   	// push into routines a workout object
 // 	newRoutine.workouts.push(workout);
 // 	// push into user's routines the newRoutine
@@ -123,9 +123,9 @@ var db = require("./models");
 // })
 db.User.find({}, function(err, success){
       console.log(success);
-})
+});
 
 db.User.remove({}, function(err, success){
 	console.log("Successfully removed everything.");
-})
+});
 // process.exit();

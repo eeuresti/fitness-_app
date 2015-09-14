@@ -36,7 +36,7 @@ var response = {
       {name: "Side-plank", duration: 30, type: "workout", song: "https://archive.org/embed/wtfistis&autoplay=1" },
       {name: "You Are Done! Great Job!", duration: 6, type: "final", song: "https://archive.org/embed/mel_Done&autoplay=1"}
    ]
-}
+};
 
 
 //========================================
@@ -44,7 +44,7 @@ var response = {
 //========================================
 
 
-//music 
+//music
 
 
 
@@ -52,14 +52,14 @@ var response = {
 function nextWorkout(){
     var next = response.workout.shift();
     if (next) {
-        return next
-    } 
+        return next;
+    }
     //if no more workouts, count log completions and redirect to menu page
     else {
         $.post("/logCompletion", {routineUsed: location.pathname.slice(1)})
           .done(function(res){
             // send data <- hint
-            res.send(res)
+            res.send(res);
             // var log = {location.pathname.slice(1)}
             // console.log(log, "log");
             //window.location.pathway
@@ -69,37 +69,38 @@ function nextWorkout(){
     }
 }
 
-//display workouts 
+//display workouts
 function doNextWorkout(){
     var current_workout = nextWorkout();
     var currentType = current_workout.type;
     var currentSong = current_workout.song;
-  
+    var upNext = response.workout[0].name;
+
       //if the workout type is "start", do this
       if (currentType === "start") {
       $("body").css("background-color", "#9068be");
       $(".itemName").text(current_workout.name);
-      countDownFrom(current_workout.duration, doNextWorkout)
+      countDownFrom(current_workout.duration, doNextWorkout);
     }
     //if the workout type is workout, then do this
     else if (currentType === "workout"){
-      var upNext = response.workout[0].name;
+
       $("body").css("background-color", "#61EF9E");
       $(".itemName").text(current_workout.name);
       $(".next").text("You Can Do This!");
       $("#music").attr('src', currentSong);
-      countDownFrom(current_workout.duration, doNextWorkout)
+      countDownFrom(current_workout.duration, doNextWorkout);
     }
-    
+
     //if the workout type is break, do this
     else if (currentType === "break") {
-      var upNext = response.workout[0].name;
+
       console.log("this is a break");
       $("body").css("background-color", "#9068be");
       $(".itemName").text(current_workout.name);
       $(".next").text("Up Next: "+ upNext);
       $("#music").attr('src', currentSong);
-      countDownFrom(current_workout.duration, doNextWorkout)
+      countDownFrom(current_workout.duration, doNextWorkout);
     }
 
     //if the workout type is final, then do this
@@ -107,14 +108,14 @@ function doNextWorkout(){
       console.log("this is the end");
       $("body").css("background-color", "#9068be");
       $(".itemName").text(current_workout.name);
-      countDownFrom(current_workout.duration, doNextWorkout)
+      countDownFrom(current_workout.duration, doNextWorkout);
     }
 }
 
 //call the function to initiate
 $(function(){
-    doNextWorkout()
-})
+    doNextWorkout();
+});
 
 
 //========================================
@@ -134,7 +135,3 @@ function countDownFrom(time, next) {
            }
         }, 1000);
 }
-
-
-
-

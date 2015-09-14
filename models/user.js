@@ -11,7 +11,7 @@ var mongoose = require('mongoose'),
 var CompletionSchema = new Schema({
   routineUsed: String,
   createdAt: {type: Date, default: Date.now}
-});   
+});
 
 
 // //========================================
@@ -31,7 +31,7 @@ var CompletionSchema = new Schema({
 //========================================
 
 var UserSchema = new Schema({
-	name: {type: String, required: true},	
+	name: {type: String, required: true},
 	email: {type: String, required: true},
 	passwordDigest: {type: String, required: true},
 	createdAt: {type: Date, default: Date.now},
@@ -85,7 +85,7 @@ UserSchema.statics.authenticate = function (email, password, cb) {
       cb(null, user);
     } else {
       // user found, but password incorrect
-      cb("password incorrect", user)
+      cb("password incorrect", user);
     }
   });
 };
